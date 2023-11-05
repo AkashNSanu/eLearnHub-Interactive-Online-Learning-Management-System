@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <title>Course Directory</title>
+</head>
+<body>
+<div class="container p-5 my-5 border">
+
+    <h3>Course Directory</h3>
+    <hr>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th>Courses</th>
+            <th>Instructor Name & Details</th>
+            <th>Reviews</th>
+            <th>Update</th>
+            <th>Action</th>
+
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="tempCourse : ${courses}" th:if="${tempCourse.title != 'null'}">
+
+            <td th:text="${tempCourse.title}" />
+            <td><span th:text="${tempCourse.instructor.firstName+' '+tempCourse.instructor.lastName}"/>
+                <a th:href="@{/college/showInstructorDetails(instructorId=${tempCourse.instructor.id})}"
+                    class="btn btn-primary btn-sm">
+                    More Details
+                </a>
+            </td>
+            <td>
+                <a th:href="@{/college/showReviews(courseId=${tempCourse.id})}"
+                   class="btn btn-primary btn-sm">
+                    Reviews
+                </a>
+            </td>
+            <td>
+                <a th:href="@{/college/showFormToUpdateCourse(courseId=${tempCourse.id})}"
+                   class="btn btn-primary btn-sm">
+                    Update
+                </a>
+            </td>
+            <td th:if="${#lists.size(courses) >= 2}">
+                <a th:href="@{/college/deleteCourse(courseId=${tempCourse.id})}"
+                   class="btn btn-danger btn-sm">
+                    Delete
+                </a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

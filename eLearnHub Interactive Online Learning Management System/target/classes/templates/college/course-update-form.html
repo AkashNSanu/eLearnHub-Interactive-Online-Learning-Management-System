@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <title>Save Course</title>
+</head>
+<body>
+
+<div class="container p-5 my-5 border">
+    <h3>Course Directory</h3>
+    <hr>
+    <p class="h4 mb-4">Save Course</p>
+    <form th:action="@{/college/updateCourse(courseId=${courseId})}" th:object="${course}"  method="post">
+
+        <!-- Add hidden form field to handle the update-->
+        <input type="hidden" th:field="*{id}">
+
+
+        <input type="text" th:field="*{title}"
+               class="form-control mb-4 w-25" placeholder="Course name">
+
+        <input type="hidden" th:field="*{instructor.id}">
+
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+    </form>
+
+    <hr>
+    <a th:href="@{/college/instructors}"
+       class="btn btn-primary btn-sm mb-3">
+        Back to Instructor List
+    </a>
+
+</div>
+
+</body>
+</html>
