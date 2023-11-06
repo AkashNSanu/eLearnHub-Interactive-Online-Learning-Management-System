@@ -1,1 +1,3 @@
-# eLearnHub-Interactive-Online-Learning-Management-System
+eLearnHub-Interactive-Online-Learning-Management-System
+
+Designed and developed a Online Learning Management System using JAVA, Spring, JPA and Thymeleaf. This system efficiently manages information about courses, instructors, students, and course reviews. Integrated Spring Data JPA for seamless CRUD actions on MySQL database and employed advanced Hibernate mapping techniques to optimize system performance and enhance the user experience. In addition, added Spring Security and form validation features. Utilized Thymeleaf templates for responsive front-end design, resulting in an efficient and user-centric learning platform records management solution.
